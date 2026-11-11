@@ -24,6 +24,11 @@ public abstract class Product {
 
     public abstract String getCategory();
 
+    @Override
+    public String toString() {
+        return getCategory() + "[" + id + ", " + name + ", stock=" + stockQuantity + "]";
+    }
+
     public boolean isInStock(int qty) {
         return stockQuantity >= qty;
     }
