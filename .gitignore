@@ -3,6 +3,7 @@
 
 # Compiled Files
 *.exe
+*.class
 
 # Logs / Temporary Files
 *.logs 
