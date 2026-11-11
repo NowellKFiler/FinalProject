@@ -1,0 +1,10 @@
+# IDE / Editor Files
+.vscode/
+
+# Compiled Files
+*.exe
+
+# Logs / Temporary Files
+*.logs 
+*.tmp 
+*.cache
