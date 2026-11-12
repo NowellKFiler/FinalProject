@@ -9,11 +9,13 @@ As much as I hate OOP due to dependencies and redundant tasks, this is used for 
 I plan to add User for Identity as a class, store that stores products. Maybe orders if it cant be bypassed since OOP.
 
 Thus:
-Product.java       (abstract)  		 ← abstraction
-Electronics.java   extends Product 	 ← inheritance
-Clothing.java      extends Product 	 ← inheritance (2nd subclass, needed for polymorphism)
-User.java          (abstract)  		 ← abstraction, 2nd hierarchy
+```text
+Product.java       (abstract)        ← abstraction
+Electronics.java   extends Product   ← inheritance
+Clothing.java      extends Product   ← inheritance (2nd subclass, needed for polymorphism)
+User.java          (abstract)        ← abstraction, 2nd hierarchy
 Admin.java         extends User
 Customer.java      extends User
-Store.java        					 ← composition + encapsulation
-Main.java         					 ← demo
+Store.java                           ← composition + encapsulation
+Main.java                            ← demo
+```
