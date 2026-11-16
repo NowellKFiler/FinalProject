@@ -20,6 +20,8 @@ public abstract class User {
 
     public abstract boolean canManageProducts();
 
+    public abstract void showMenu(Store store);
+
     public boolean authenticate(String attempt) {
         return password.equals(attempt);
     }

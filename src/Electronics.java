@@ -26,6 +26,11 @@ public class Electronics extends Product {
 
     @Override
     public String getCategory() {
+        return "Electronics";
+    }
+
+    @Override
+    public String toString() {
         return super.toString()
                 + String.format(" [brand=%s, warranty=%dmo, tax=%.0f%%]", brand, warrantyMonths, taxRate * 100);
     }
