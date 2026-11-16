@@ -1,78 +1,65 @@
 # Client-Side E-Commerce Application
 
-A modular Java console application designed as a final academic project. This repository contains the primary controller interface that establishes the client-side user experience, simulating catalog browsing, cart management, and checkout pipelines.
+A Java console application built as a final academic project to demonstrate the **four pillars of Object-Oriented Programming (OOP)**. The current codebase provides a domain model for products, users, and inventory management; the interactive CLI loop is not yet implemented.
 
----
+## Tech Stack
+- **Language:** Java (JDK 17+)
+- **Paradigm:** Object-Oriented Programming (OOP)
+- **Interface:** Command-line (CLI) – entry point only at present
 
-## Technical Stack
-*   **Language:** Java (JDK 17 or higher)
-*   **Architecture:** Command-Line Interface (CLI) text loop
-*   **Programming Paradigm:** Object-Oriented Programming (OOP) structural design
+## OOP Design
+The project is structured around two abstract hierarchies and a composition-based store manager:
 
----
-## Core Flow Architecture
-The application runs an infinite execution loop driven by standard input parsing to navigate across client sub-modules:
-*   **Main Menu Dashboard:** Entry gateway managing operational states.
-*   **Product Catalog View:** Interface stub intended for product listing, search mechanics, and cart additions.
-*   **Shopping Cart Manager:** Interface stub intended to track client items, quantities, and pricing calculations.
-*   **Checkout Simulator:** Processing pipeline interface intended for order placement and validation.
+| Pillar | Implementation |
+|--------|----------------|
+| **Abstraction** | `Product` and `User` are abstract base classes with abstract methods (`calculateFinalPrice()`, `getCategory()`, `getRole()`, `canManageProducts()`) |
+| **Inheritance** | `Electronics` and `Clothing` extend `Product`; `Admin` and `Customer` extend `User` |
+| **Polymorphism** | Concrete subclasses override abstract methods (e.g., `calculateFinalPrice()` per product type) |
+| **Encapsulation** | `Store` holds a private `List<Product>`, exposes unmodifiable views, and enforces manager-only mutations via `requireManager()` |
 
----
-## File Structure
-The project consists strictly of the primary execution coordinator located in the root of the source directory:
-```text
+## Source Files
+```
 FinalProject/
-├── docs/          # Project documentation files
-├── src/           # Application source directory
-│   ├── Main.java  # Core application entry point and user routing logic
-│   └── Main.class # Compiled Java bytecode executable
-└── README.md      # Technical documentation reference
+├── docs/
+│   ├── documentation.md          # Design rationale (OOP pillars)
+│   └── TechStack&InitialSetup.md
+├── src/
+│   ├── Main.java                 # Entry point (Scanner stub; CLI loop pending)
+│   ├── Product.java              # Abstract product base class
+│   ├── Electronics.java          # Product subclass
+│   ├── Clothing.java             # Product subclass
+│   ├── User.java                 # Abstract user base class
+│   ├── Admin.java                # User subclass (manager role)
+│   ├── Customer.java             # User subclass (customer role)
+│   └── Store.java                # Inventory manager (encapsulation + composition)
+└── README.md
 ```
 
----
+> **Note:** The root README previously described an "infinite execution loop" with menu options, but `Main.java` currently only creates a `Scanner` and closes it. The interactive CLI is a planned feature; the domain model is complete.
 
-## Prerequisites
-*   Java Development Kit (JDK) 17 or higher
-*   A command-line terminal environment (Bash, PowerShell, or Zsh)
+## Build & Run
+1. **Clone and enter**
+   ```bash
+   git clone https://github.com/NowellKFiler/FinalProject.git
+   cd FinalProject
+   ```
 
----
-## Compilation & Execution
-Follow these steps in your terminal to clone, compile, and run the project locally:
+2. **Compile all sources**
+   ```bash
+   javac src/*.java
+   ```
 
-### 1. Clone the Repository
-Clone the project tracking data from GitHub and move into the project root directory:
-```bash
-git clone https://github.com
-cd FinalProject
-```
-
-### 2. Code Compilation
-Compile the raw source file directly inside the source workspace:
-```bash
-javac src/Main.java
-```
-*Note: This operation outputs the executable bytecode binary file (`src/Main.class`) alongside your code.*
-
-### 3. Runtime Execution
-Launch the compiled entry class binary from the root project directory:
-```bash
-java -cp src Main
-```
-
-
----
-1. Upon execution, select an integer option `(1-4)` from the console command prompt.
-2. Enter submenu actions using standard text responses as prompted.
-3. Exit the execution loop gracefully by choosing option `4`.
-
----
+3. **Run**
+   ```bash
+   java -cp src Main
+   ```
+> **Note:** *The program currently exits immediately because the CLI loop is not yet wired up.*
 
 ## Contributors
-*   **NowellKFiler** - *Lead Developer* - [GitHub Profile](https://github.com/NowellKFiler)
-*   **SyafiqKarmen** - *Technical Lead* - [GitHub Profile](https://github.com/SyafiqKarmen)
-*   **Kenzoku00** - *Software Architect* - [GitHub Profile](https://github.com/Kenzoku00)
-
----
+- **NowellKFiler** – Lead Developer ([GitHub](https://github.com/NowellKFiler))
+- **SyafiqKarmen** – Technical Lead ([GitHub](https://github.com/SyafiqKarmen))
+- **Kenzoku00** – Software Architect ([GitHub](https://github.com/Kenzoku00))
+- **gian451** - Software Architect ([Github](https://github.com/gian451))
 
 ## License
 Developed exclusively for educational evaluation as a final project submission.
