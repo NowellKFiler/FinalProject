@@ -6,7 +6,7 @@ public class Main {
 
         boolean running = true;
         while (running) {
-            System.out.println("\n=== TOKO ONLINE ===");
+            System.out.println("\n==== TOKO ONLINE ====");
             System.out.println("1. Login");
             System.out.println("2. Register (Customer)");
             System.out.println("0. Keluar");
