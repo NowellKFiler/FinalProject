@@ -22,13 +22,21 @@ public class UserManager {
         return null;
     }
 
+    public String generateCustomerId() {
+        int number = 1;
+        while (true) {
+            String candidateId = String.format("C%03d", number);
+            if (findUser(candidateId) == null) {
+                return candidateId;
+            }
+            number++;
+        }
+    }
+    
     public void register() {
         try {
-            String id = InputHelper.readString("ID baru   : ");
-            if (findUser(id) != null) {
-                System.out.println("ID sudah dipakai.");
-                return;
-            }
+            String id = generateCustomerId();
+            System.out.println("ID baru   : " + id);
             String name = InputHelper.readString("Nama      : ");
             String password = InputHelper.readString("Password  : ");
             users.add(new Customer(id, name, password));

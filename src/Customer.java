@@ -1,6 +1,9 @@
 public class Customer extends User {
     public Customer(String id, String name, String password) {
         super(id, name, password);
+        if (!id.toUpperCase().startsWith("C")) {
+            throw new IllegalArgumentException("ID Customer harus diawali huruf 'C' (contoh: C001).");
+        }
     }
 
     @Override

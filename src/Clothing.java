@@ -6,6 +6,10 @@ public class Clothing extends Product {
     public Clothing(String id, String name, double basePrice, int stockQuantity, String brand, String size,
             double taxRate) {
         super(id, name, basePrice, stockQuantity);
+        if (!id.toUpperCase().startsWith("C")) {
+            throw new IllegalArgumentException("ID Produk Clothing harus diawali huruf 'C' (contoh: C001).");
+        }
+
         if (brand == null || brand.isBlank()) {
             throw new IllegalArgumentException("Brand required.");
         }

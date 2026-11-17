@@ -6,6 +6,9 @@ public class Electronics extends Product {
     public Electronics(String id, String name, double basePrice, int stockQuantity, String brand, int warrantyMonths,
             double taxRate) {
         super(id, name, basePrice, stockQuantity);
+        if (!id.toUpperCase().startsWith("E")) {
+            throw new IllegalArgumentException("ID Produk Electronics harus diawali huruf 'E' (contoh: E001).");
+        }
 
         if (brand == null || brand.isBlank())
             throw new IllegalArgumentException("Brand Required.");

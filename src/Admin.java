@@ -63,7 +63,8 @@ public class Admin extends User {
     }
 
     private void addElectronics(Store store) {
-        String id = InputHelper.readString("ID            : ");
+        String id = store.generateNextId("E");
+        System.out.println("ID            : " + id);
         String name = InputHelper.readString("Nama          : ");
         double price = InputHelper.readDouble("Harga dasar    : ");
         int stock = InputHelper.readInt("Stok          : ");
@@ -76,7 +77,8 @@ public class Admin extends User {
     }
 
     private void addClothing(Store store) {
-        String id = InputHelper.readString("ID            : ");
+        String id = store.generateNextId("C");
+        System.out.println("ID            : " + id);
         String name = InputHelper.readString("Nama          : ");
         double price = InputHelper.readDouble("Harga dasar    : ");
         int stock = InputHelper.readInt("Stok          : ");

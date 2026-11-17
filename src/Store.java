@@ -27,6 +27,17 @@ public class Store {
         return null;
     }
 
+    public String generateNextId(String prefix) {
+        int number = 1;
+        while (true) {
+            String candidateId = String.format("%s%03d", prefix, number);
+            if (findById(candidateId) == null) {
+                return candidateId;
+            }
+            number++;
+        }
+    }
+
     public List<Product> getAll() {
         return Collections.unmodifiableList(products);
     }
