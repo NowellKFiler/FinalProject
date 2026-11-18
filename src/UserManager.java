@@ -36,9 +36,17 @@ public class UserManager {
     public void register() {
         try {
             String id = generateCustomerId();
+            String password;
             System.out.println("ID baru   : " + id);
-            String name = InputHelper.readString("Nama      : ");
-            String password = InputHelper.readString("Password  : ");
+            String name = InputHelper.readValidString("Nama      : ", 155);
+            while (true) {
+                password = InputHelper.readString("Password : ");
+                if (password.isBlank() || password.length() < 4) {
+                    System.out.println("Password minimal 4 karakter dan tidak boleh hanya spasi (kosong).");
+                } else {
+                    break;
+                }
+            }
             users.add(new Customer(id, name, password));
             System.out.println("Registrasi berhasil. Silakan login.");
         } catch (IllegalArgumentException e) {

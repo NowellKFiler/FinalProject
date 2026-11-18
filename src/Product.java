@@ -9,9 +9,11 @@ public abstract class Product {
             throw new IllegalArgumentException("ID required");
         if (name == null || name.isBlank())
             throw new IllegalArgumentException("Name required");
-        if (basePrice < 0)
-            throw new IllegalArgumentException("Price must be larger or equal to 0");
-        if (stockQuantity < 0)
+        if (name.trim().length() > 256)
+            throw new IllegalArgumentException("Product name cannot exceed 256 char");
+        if (basePrice <= 0)
+            throw new IllegalArgumentException("Price must be larger than 0");
+        if (stockQuantity <= 0)
             throw new IllegalArgumentException("Stock Quantity must be Larger than 0");
 
         this.id = id;
@@ -34,7 +36,7 @@ public abstract class Product {
     }
 
     public void reduceStock(int qty) {
-        if (qty < 0)
+        if (qty <= 0)
             throw new IllegalArgumentException("Quantity must be >= 0");
         if (qty > stockQuantity)
             throw new IllegalArgumentException("Not enough stock");
@@ -42,7 +44,7 @@ public abstract class Product {
     }
 
     public void increaseStock(int qty) {
-        if (qty < 0)
+        if (qty <= 0)
             throw new IllegalArgumentException("Quantity must be a non-zero value");
         stockQuantity += qty;
     }

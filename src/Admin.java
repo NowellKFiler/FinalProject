@@ -65,29 +65,29 @@ public class Admin extends User {
     private void addElectronics(Store store) {
         String id = store.generateNextId("E");
         System.out.println("ID            : " + id);
-        String name = InputHelper.readString("Nama          : ");
-        double price = InputHelper.readDouble("Harga dasar    : ");
-        int stock = InputHelper.readInt("Stok          : ");
-        String brand = InputHelper.readString("Brand         : ");
+        String name = InputHelper.readValidString("Nama          : ", 256);
+        double price = InputHelper.readMinDouble("Harga dasar    : ", 0, false);
+        int stock = InputHelper.readMinInt("Stok          : ", 1);
+        String brand = InputHelper.readValidString("Brand         : ", 100);
         int warranty = InputHelper.readInt("Garansi (bulan): ");
-        double tax = InputHelper.readDouble("Pajak (%)      : ") / 100.0;
+        double tax = InputHelper.readMinDouble("Pajak (%)      : ", 0, true) / 100.0;
 
         store.addProduct(this, new Electronics(id, name, price, stock, brand, warranty, tax));
-        System.out.println("Produk Electronics ditambahkan.");
+        System.out.println("Produk Electronics "+ name +" (" + id + ") ditambahkan.");
     }
 
     private void addClothing(Store store) {
         String id = store.generateNextId("C");
         System.out.println("ID            : " + id);
-        String name = InputHelper.readString("Nama          : ");
-        double price = InputHelper.readDouble("Harga dasar    : ");
-        int stock = InputHelper.readInt("Stok          : ");
-        String brand = InputHelper.readString("Brand         : ");
-        String size = InputHelper.readString("Ukuran        : ");
-        double tax = InputHelper.readDouble("Pajak (%)      : ") / 100.0;
+        String name = InputHelper.readValidString("Nama          : ", 256);
+        double price = InputHelper.readMinDouble("Harga dasar    : ", 0, false);
+        int stock = InputHelper.readMinInt("Stok          : ", 1);
+        String brand = InputHelper.readValidString("Brand         : ", 100);
+        String size = InputHelper.readValidString("Ukuran        : ", 20);
+        double tax = InputHelper.readMinDouble("Pajak (%)      : ", 0, true) / 100.0;
 
         store.addProduct(this, new Clothing(id, name, price, stock, brand, size, tax));
-        System.out.println("Produk Clothing ditambahkan.");
+        System.out.println("Produk Clothing "+ name +" (" + id + ") ditambahkan.");
     }
 
     private void addStock(Store store) {

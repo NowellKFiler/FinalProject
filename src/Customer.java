@@ -56,7 +56,7 @@ public class Customer extends User {
             return;
         }
 
-        int qty = InputHelper.readInt("Jumlah: ");
+        int qty = InputHelper.readMinInt("Jumlah: ", 1);
         if (qty <= 0) {
             System.out.println("Jumlah harus lebih dari 0.");
             return;
